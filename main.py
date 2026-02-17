@@ -33,36 +33,30 @@ def extr_IPv4(email_header):
     else:
         return None
 
-# def check_reputation(ioc):
+
+def check_reputation(ioc, ioc_type="ip"):
+    if not API_KEY:
+        print(f"   [!] No API Key configured. Skipping real check for {ioc}")
+        return 0
+
+    headers = {"x-apikey": API_KEY}
+    try:
+        if ioc_type == "ip":
+            url = f"https://www.virustotal.com/api/v3/ip_addresses/{ioc}"
+            response = requests.get(url, headers=headers)
+
+            if response.status_code == 200:
+                json_resp = response.json()
+                return json_resp['data']['attributes']['last_analysis_stats']['malicious']
+
+    except Exception as e:
+        print(f"   [!] API Error: {e}")
+
+    return 0
 
 # def analyze_email(filepath):
 
+# def main():
 
-def main():
-    raw_email_string = """Subject: Urgent!
-From: hacker@bad.com
-To: victim@company.com
-Received: from mail.google.com (mail.google.com [172.217.0.0]) by my-server.com;
-Received: from intermediate.net (relay.net [104.16.132.0]) by google.com;
-Received: from evil-laptop.local (bad-guy-pc [45.33.22.11]) by intermediate.net;
-
-Hello,
-Please click this link: https://malicious-site.com/login.php?user=target
-This email was sent from an internal server.
-"""
-    msg = email.message_from_string(raw_email_string, policy=policy.default)
-    body = msg.get_body(preferencelist=('plain')).get_content()
-
-    ips = extr_IPv4(msg)
-    urls = extr_URLs(body)
-
-    print("Analyzer started...")
-
-    time.sleep(5)
-
-    print("Found IPs:", ips)
-    print("Found URLs:", urls)
-
-
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
