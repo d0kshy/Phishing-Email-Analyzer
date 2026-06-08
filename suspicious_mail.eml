@@ -1,0 +1,24 @@
+Received: from mx-out.shadow-infrastructure.net (unknown [194.58.112.44])
+	by mail.your-isp.com with ESMTPS id g77x19za; Tue, 09 Jun 2026 08:14:02 +0200
+From: "GitHub Security" <noreply@github.com>
+Reply-To: <repo-recovery-team@protonmail.com>
+Subject: [CRITICAL] Unauthorized Access Detected on repository: d0kshy/LuminaLog-IR
+Content-Type: text/plain; charset="utf-8"
+
+Hello Daria,
+
+We recently detected multiple failed login attempts and an unauthorized SSH key addition to your GitHub account.
+The suspicious activity originated from a new device attempting to clone your repository "LuminaLog-IR".
+
+To protect your code, we have temporarily restricted push/pull access to your account.
+
+Please verify your identity and review the unauthorized SSH keys immediately by logging into the secure recovery panel:
+
+http://github-account-recovery-secure.com/verify?user=d0kshy
+
+If you do not recognize this activity, please read our security guidelines on securing your account at https://docs.github.com/en/authentication/keeping-your-account-and-data-secure.
+
+Failure to verify within 24 hours will result in permanent repository suspension.
+
+Thanks,
+The GitHub Security Team
